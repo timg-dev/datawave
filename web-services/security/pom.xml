@@ -20,7 +20,7 @@
         </dependency>
         <dependency>
             <groupId>commons-beanutils</groupId>
-            <artifactId>commons-beanutils-core</artifactId>
+            <artifactId>commons-beanutils</artifactId>
         </dependency>
         <dependency>
             <groupId>commons-cli</groupId>
@@ -59,6 +59,11 @@
         <dependency>
             <groupId>org.apache.accumulo</groupId>
             <artifactId>accumulo-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-configuration2</artifactId>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -182,6 +187,11 @@
         <dependency>
             <groupId>org.wildfly</groupId>
             <artifactId>wildfly-security</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.woodstox</groupId>
+            <artifactId>woodstox-core</artifactId>
             <scope>provided</scope>
         </dependency>
         <dependency>

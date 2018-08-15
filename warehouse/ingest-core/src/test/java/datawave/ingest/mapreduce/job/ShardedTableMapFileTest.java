@@ -74,8 +74,13 @@ public class ShardedTableMapFileTest {
         Assert.assertEquals(1, result.size());
     }
     
-    @Test
+    @Test(timeout = 30000)
     public void testWriteSplitsToAccumuloAndReadThem() throws Exception {
+        
+        // Added timeout to this test b/c it could hang infinitely without failing, e.g., whenever
+        // MiniAccumuloCluster starts up but tserver subsequently dies. To troubleshoot timeout errors
+        // here in the future, debug to determine the MAC instance's tmp log directory and go from there
+        
         Configuration conf = new Configuration();
         conf.setInt(ShardIdFactory.NUM_SHARDS, 1);
         conf.setInt(ShardedTableMapFile.SHARDS_BALANCED_DAYS_TO_VERIFY, 1);

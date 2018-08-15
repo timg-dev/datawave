@@ -68,6 +68,16 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
+            <groupId>com.fasterxml.woodstox</groupId>
+            <artifactId>woodstox-core</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-configuration2</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
             <groupId>com.sun.mail</groupId>
             <artifactId>mailapi</artifactId>
             <version>1.4.5</version>

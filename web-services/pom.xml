@@ -121,11 +121,6 @@
                         <groupId>joda-time</groupId>
                         <artifactId>joda-time</artifactId>
                     </exclusion>
-                    <exclusion>
-                        <!-- we already get commons-beanutils-core -->
-                        <groupId>commons-beanutils</groupId>
-                        <artifactId>commons-beanutils</artifactId>
-                    </exclusion>
                 </exclusions>
             </dependency>
             <dependency>
@@ -242,7 +237,7 @@
                         <artifactId>junit</artifactId>
                     </exclusion>
                     <exclusion>
-                        <!-- we already get commons-beanutils-core -->
+                        <!-- we already get commons-beanutils -->
                         <groupId>commons-beanutils</groupId>
                         <artifactId>commons-beanutils</artifactId>
                     </exclusion>
