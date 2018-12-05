@@ -14,7 +14,8 @@ import org.apache.accumulo.core.data.Range;
 import org.apache.accumulo.core.data.Value;
 import org.apache.accumulo.core.security.Authorizations;
 import org.apache.hadoop.io.Text;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cache.annotation.EnableCaching;
@@ -37,7 +38,7 @@ import java.util.stream.StreamSupport;
 @EnableCaching
 @Component("typeMetadataHelper")
 public class TypeMetadataHelper {
-    private static final Logger log = Logger.getLogger(TypeMetadataHelper.class);
+    private static final Logger log = LoggerFactory.getLogger(TypeMetadataHelper.class);
     
     public static final String NULL_BYTE = "\0";
     

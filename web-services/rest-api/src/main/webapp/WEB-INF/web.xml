@@ -76,8 +76,6 @@
             datawave.webservice.modification.cache.ModificationCacheBean,
             <!-- From Model -->
             datawave.webservice.query.model.ModelBean,
-            <!-- From DataDictionary -->
-            datawave.webservice.datadictionary.DataDictionaryBean,
             <!-- From EdgeDictionary -->
             datawave.webservice.edgedictionary.EdgeDictionaryBean,
             <!-- From MapReduce -->

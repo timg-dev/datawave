@@ -120,12 +120,6 @@
         </dependency>
         <dependency>
             <groupId>gov.nsa.datawave.webservices</groupId>
-            <artifactId>datawave-ws-data-dictionary</artifactId>
-            <version>${project.version}</version>
-            <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>gov.nsa.datawave.webservices</groupId>
             <artifactId>datawave-ws-edge-dictionary</artifactId>
             <version>${project.version}</version>
             <optional>true</optional>

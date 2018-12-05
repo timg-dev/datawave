@@ -15,12 +15,6 @@
             <artifactId>commons-configuration</artifactId>
         </dependency>
         <dependency>
-            <!-- In mine, but not in upstream...leaving here for now. -->
-            <groupId>gov.nsa.datawave</groupId>
-            <artifactId>datawave-data-dictionary-core</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
             <groupId>gov.nsa.datawave</groupId>
             <artifactId>datawave-edge-dictionary-core</artifactId>
             <version>${project.version}</version>
@@ -88,12 +82,6 @@
             <groupId>gov.nsa.datawave.webservices</groupId>
             <artifactId>datawave-ws-common-util</artifactId>
             <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>gov.nsa.datawave.webservices</groupId>
-            <artifactId>datawave-ws-data-dictionary</artifactId>
-            <version>${project.version}</version>
-            <type>ejb</type>
         </dependency>
         <dependency>
             <groupId>gov.nsa.datawave.webservices</groupId>
@@ -294,10 +282,6 @@
                         <ejbModule>
                             <groupId>gov.nsa.datawave.webservices</groupId>
                             <artifactId>datawave-ws-cached-results</artifactId>
-                        </ejbModule>
-                        <ejbModule>
-                            <groupId>gov.nsa.datawave.webservices</groupId>
-                            <artifactId>datawave-ws-data-dictionary</artifactId>
                         </ejbModule>
                         <ejbModule>
                             <groupId>gov.nsa.datawave.webservices</groupId>

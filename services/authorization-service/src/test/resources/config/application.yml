@@ -30,4 +30,4 @@ management:
 
 logging:
   level:
-    datawave.midroservice.authorization.cached: DEBUG
+    datawave.microservice.authorization.cached: DEBUG

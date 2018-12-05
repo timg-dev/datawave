@@ -2,6 +2,7 @@ package datawave.webservice.datadictionary;
 
 import datawave.webservice.query.result.metadata.MetadataFieldBase;
 import datawave.webservice.results.datadictionary.DataDictionaryBase;
+import datawave.webservice.results.datadictionary.DefaultFields;
 import datawave.webservice.results.datadictionary.DescriptionBase;
 import datawave.webservice.results.datadictionary.DictionaryFieldBase;
 import datawave.webservice.results.datadictionary.FieldsBase;
@@ -134,18 +135,7 @@ public class DataDictionaryHtmlProvider implements MessageBodyWriter<Object> {
         int x = 0;
         for (DictionaryFieldBase<?,? extends DescriptionBase> field : descs.getFields()) {
             for (DescriptionBase desc : field.getDescriptions()) {
-                // highlight alternating rows
-                if (x % 2 == 0) {
-                    builder.append("<tr class=\"highlight\">");
-                } else {
-                    builder.append("<tr>");
-                }
-                x++;
-                
-                builder.append("<td>").append(field.getDatatype()).append("</td>");
-                builder.append("<td>").append(field.getFieldName()).append("</td>");
-                builder.append("<td>").append(desc.getDescription()).append("</td>");
-                builder.append("</tr>");
+                DefaultFields.addDescriptionRow(field, desc, x, builder);
             }
         }
         

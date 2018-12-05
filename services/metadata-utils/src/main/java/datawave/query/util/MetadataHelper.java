@@ -44,7 +44,8 @@ import org.apache.accumulo.core.security.Authorizations;
 import org.apache.commons.lang.time.DateUtils;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.io.WritableUtils;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.CacheEvict;
@@ -52,13 +53,11 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.nio.charset.CharacterCodingException;
 import java.time.format.DateTimeParseException;
 import java.util.Arrays;
@@ -72,7 +71,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Properties;
 import java.util.Set;
 import java.util.TimeZone;
 import java.util.concurrent.ExecutionException;
@@ -93,11 +91,10 @@ import java.util.stream.StreamSupport;
  * TODO -- Break this class apart
  * 
  */
-@Configuration
 @EnableCaching
 @Component("metadataHelper")
 public class MetadataHelper implements ApplicationContextAware {
-    private static final Logger log = Logger.getLogger(MetadataHelper.class);
+    private static final Logger log = LoggerFactory.getLogger(MetadataHelper.class);
     
     public static final String DEFAULT_AUTHS_PROPERTY = "metadatahelper.default.auths";
     
@@ -146,7 +143,7 @@ public class MetadataHelper implements ApplicationContextAware {
             log.debug("MetadataHelper created outside of dependency-injection context. This is fine for unit testing, but this is an error in production code",
                             new Exception("exception for debug purposes"));
         MetadataHelper mhwd = new MetadataHelper();
-        
+
         mhwd.allFieldMetadataHelper = new AllFieldMetadataHelper();
         mhwd.allFieldMetadataHelper.typeMetadataHelper = new TypeMetadataHelper();
         mhwd.allFieldMetadataHelper.compositeMetadataHelper = new CompositeMetadataHelper();

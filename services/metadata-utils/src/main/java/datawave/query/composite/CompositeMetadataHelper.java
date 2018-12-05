@@ -15,7 +15,6 @@ import org.apache.log4j.Logger;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cache.annotation.EnableCaching;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 import java.text.ParseException;
@@ -26,9 +25,6 @@ import java.util.List;
 import java.util.Map.Entry;
 import java.util.Set;
 
-/**
- */
-@Configuration
 @EnableCaching
 @Component("compositeMetadataHelper")
 public class CompositeMetadataHelper {

@@ -38,6 +38,8 @@
         <module>../hazelcast-service</module>
         <module>../authorization-service</module>
         <module>../audit-service</module>
+        <module>../data-dictionary-api</module>
+        <module>../data-dictionary-service</module>
     </modules>
 
 </project>
