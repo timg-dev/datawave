@@ -14,4 +14,9 @@ mock:
     #    ROLE1: auth1
     #    ROLE2: auth2
     #    ROLE3: auth3
-
+    # Example user below is valid for use with the datawave-quickstart and its canned Accumulo data and with our test PKI materials
+    #  "[cn=test a. user, ou=example developers, o=example corp, c=us<cn=example corp ca, o=example corp, c=us>]":
+    #    Public: PUBLIC
+    #    Private: PRIVATE
+    #    AuthorizedUser: AUTH_USER
+    #    JBossAdministrator: JBOSS_ADMIN

@@ -1,0 +1,35 @@
+server:
+  port: 8843
+
+accumulo:
+  zookeepers: 'localhost:2181'
+  instanceName: 'my-instance-01'
+  username: 'root'
+  password: 'secret'
+  lookup:
+    enabled: true
+    numQueryThreads: 5
+    audit:
+      defaultColumnVisibility: 'FOO'
+      defaultAuditType: 'PASSIVE'
+      tableConfig:
+        - tableRegex: 'shard'
+          rowRegex: '2011.*'
+          colFamRegex: '.*'
+          colQualRegex: '.*'
+          auditType: 'ACTIVE'
+
+        - tableRegex: 'shard'
+          rowRegex: '2013.*'
+          colFamRegex: '.*'
+          colQualRegex: '.*'
+          auditType: 'PASSIVE'
+
+audit:
+  discovery:
+    enabled: false
+  uri: '${AUDIT_SERVER_URL:https://localhost:8743/audit}'
+
+logging:
+  level:
+    datawave.microservice.accumulo: DEBUG
