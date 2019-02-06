@@ -90,7 +90,7 @@ public class DatawaveDataDictionaryImpl implements DatawaveDataDictionary<Defaul
     public Collection<DefaultMetadataField> getFields(String modelName, String modelTableName, String metadataTableName, Collection<String> dataTypeFilters,
                     Connector connector, Set<Authorizations> auths, int numThreads) throws Exception {
         // Get a MetadataHelper
-        MetadataHelper metadataHelper = getInitializedMetadataHelper(connector, metadataTableName, auths);
+        MetadataHelper metadataHelper = metadataHelperFactory.createMetadataHelper(connector, metadataTableName, auths);
         // So we can get a QueryModel
         QueryModel queryModel = metadataHelper.getQueryModel(modelTableName, modelName, metadataHelper.getIndexOnlyFields(null));
         
@@ -269,7 +269,7 @@ public class DatawaveDataDictionaryImpl implements DatawaveDataDictionary<Defaul
     @Override
     public void setDescription(Connector connector, String metadataTableName, Set<Authorizations> auths, String modelName, String modelTable, String fieldName,
                     String datatype, Set<DefaultDescription> descs) throws Exception {
-        MetadataHelper helper = getInitializedMetadataHelper(connector, metadataTableName, auths);
+        MetadataHelper helper = metadataHelperFactory.createMetadataHelper(connector, metadataTableName, auths);
         
         QueryModel model = helper.getQueryModel(modelTable, modelName);
         Map<String,String> mapping = reverseReverseMapping(model);
@@ -289,7 +289,7 @@ public class DatawaveDataDictionaryImpl implements DatawaveDataDictionary<Defaul
     @Override
     public Multimap<Entry<String,String>,DefaultDescription> getDescriptions(Connector connector, String metadataTableName, Set<Authorizations> auths,
                     String modelName, String modelTable) throws Exception {
-        MetadataHelper helper = getInitializedMetadataHelper(connector, metadataTableName, auths);
+        MetadataHelper helper = metadataHelperFactory.createMetadataHelper(connector, metadataTableName, auths);
         QueryModel model = helper.getQueryModel(modelTable, modelName);
         Map<String,String> mapping = model.getReverseQueryMapping();
         
@@ -316,7 +316,7 @@ public class DatawaveDataDictionaryImpl implements DatawaveDataDictionary<Defaul
     @Override
     public Multimap<Entry<String,String>,DefaultDescription> getDescriptions(Connector connector, String metadataTableName, Set<Authorizations> auths,
                     String modelName, String modelTable, String datatype) throws Exception {
-        MetadataHelper helper = getInitializedMetadataHelper(connector, metadataTableName, auths);
+        MetadataHelper helper = metadataHelperFactory.createMetadataHelper(connector, metadataTableName, auths);
         QueryModel model = helper.getQueryModel(modelTable, modelName);
         Map<String,String> mapping = model.getReverseQueryMapping();
         
@@ -343,7 +343,7 @@ public class DatawaveDataDictionaryImpl implements DatawaveDataDictionary<Defaul
     @Override
     public Set<DefaultDescription> getDescriptions(Connector connector, String metadataTableName, Set<Authorizations> auths, String modelName,
                     String modelTable, String fieldName, String datatype) throws Exception {
-        MetadataHelper helper = getInitializedMetadataHelper(connector, metadataTableName, auths);
+        MetadataHelper helper = metadataHelperFactory.createMetadataHelper(connector, metadataTableName, auths);
         QueryModel model = helper.getQueryModel(modelTable, modelName);
         Map<String,String> mapping = reverseReverseMapping(model);
         
@@ -360,7 +360,7 @@ public class DatawaveDataDictionaryImpl implements DatawaveDataDictionary<Defaul
     @Override
     public void deleteDescription(Connector connector, String metadataTableName, Set<Authorizations> auths, String modelName, String modelTable,
                     String fieldName, String datatype, DefaultDescription desc) throws Exception {
-        MetadataHelper helper = getInitializedMetadataHelper(connector, metadataTableName, auths);
+        MetadataHelper helper = metadataHelperFactory.createMetadataHelper(connector, metadataTableName, auths);
         QueryModel model = helper.getQueryModel(modelTable, modelName);
         Map<String,String> mapping = reverseReverseMapping(model);
         
@@ -372,12 +372,6 @@ public class DatawaveDataDictionaryImpl implements DatawaveDataDictionary<Defaul
         } else {
             descriptionsHelper.removeDescription(new MetadataEntry(alias, datatype), desc);
         }
-    }
-    
-    private MetadataHelper getInitializedMetadataHelper(Connector connector, String metadataTableName, Set<Authorizations> auths) {
-        MetadataHelper helper = metadataHelperFactory.createMetadataHelper();
-        helper.initialize(connector, metadataTableName, auths);
-        return helper;
     }
     
     private MetadataDescriptionsHelper<DefaultDescription> getInitializedDescriptionsHelper(Connector connector, String metadataTableName,
