@@ -1389,7 +1389,7 @@ public class QueryIterator extends QueryOptions implements SortedKeyValueIterato
         if (groupingTransform == null && getGroupFields() != null & !getGroupFields().isEmpty()) {
             synchronized (getGroupFields()) {
                 if (groupingTransform == null) {
-                    groupingTransform = new GroupingTransform(null, getGroupFields());
+                    groupingTransform = new GroupingTransform(null, getGroupFields(), true);
                     groupingTransform.initialize(null, MarkingFunctionsFactory.createMarkingFunctions());
                 }
             }
